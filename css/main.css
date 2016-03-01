@@ -11,7 +11,7 @@ a * {
 /*#ts-header,#ts-header * { height:50px !important; max-height:50px !important; }*/
 
 /* Remove shit */
-.social,#ts-copyright {
+.social,#ts-copyright,#footer_copyright,#footer_morecopyright {
     display:none !important;
 }
 
