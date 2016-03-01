@@ -9,7 +9,7 @@ a * {
 }
 
 /* Remove shit */
-.navLink[href="https://r4p3.net/pages/give/"] {
+.social {
     display:none !important;
 }
 
