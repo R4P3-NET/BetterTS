@@ -2,7 +2,7 @@
 // @name TS+
 // @description Better Teamspeak
 // @author Bluscream
-// @version 1.4.1
+// @version 1.1.1
 // @encoding utf-8
 // @icon http://www.teamspeak.com/favicon.ico
 // @homepage https://r4p3.net
