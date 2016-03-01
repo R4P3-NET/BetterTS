@@ -31,16 +31,3 @@ a * {
   -ms-user-select: none !important;       /* IE/Edge */
   user-select: none !important;           /* non-prefixed version, currently
 }
-
-#toggleshoutbox {
-    cursor: pointer;
-    line-height: 25px;
-    margin: auto;
-    font-size: 12px;
-    padding: 5px;
-    text-align: center;
-    background: #EDEEF1;
-    border: solid 1px #666;
-    color: #BBBBBB;
-    border-radius: 3px;
-}
