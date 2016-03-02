@@ -2,7 +2,7 @@
 // @name TS+
 // @description Better Teamspeak
 // @author Bluscream
-// @version 1.1.1
+// @version 1.1
 // @encoding utf-8
 // @icon http://www.teamspeak.com/favicon.ico
 // @homepage https://r4p3.net
@@ -84,9 +84,21 @@ ts_toggleShoutbox = function() {
                 }
             }
         });
+		$('#ts-menu').find('a[href="http://forum.teamspeak.com"]').parent().replaceWith('\
+			<li id="community_menu" class="uk-parent" data-uk-dropdown aria-haspopup="true" aria-expanded="false">\
+				<a href="https://forum.teamspeak.com"><span>Community</span></a>\
+				<div class="uk-dropdown uk-dropdown-navbar">\
+					<ul class="uk-nav uk-nav-navbar">\
+						<li><a href="search.php?do=getnew&contenttype=vBForum_Post"><span>Unread Posts</span></a></li>\
+						<li><a href="search.php?do=getdaily"><span>Daily Posts</span></a></li>\
+						<li><a href="forumdisplay.php?do=markread"><span>Mark Forums Read</span></a></li>\
+		             		 </ul>\
+		            	</div>\
+			</li>\
+		');
         ts_addNavLink('Unread Posts', 'search.php?do=getnew&contenttype=vBForum_Post');
         ts_addNavLink('Daily Posts', 'search.php?do=getdaily');
         ts_addShoutbox('http://www.freeshoutbox.net/bluscream&');
-        ts_addNavBarLink('R4P3', 'https://r4p3.net', 1);
+        //ts_addNavBarLink('R4P3', 'https://r4p3.net', 1);
     });
 })();
