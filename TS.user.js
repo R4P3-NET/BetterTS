@@ -14,8 +14,7 @@
 // @require https://code.jquery.com/jquery-2.2.1.min.js
 // @require https://raw.githubusercontent.com/meetselva/attrchange/master/js/attrchange.js
 // @require https://raw.githubusercontent.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
-// @include *.teamspeak.com/*
-// @include *.teamspeakusa.com/*
+// @include *forum.teamspeak.com/*
 // @grant unsafeWindow
 // ==/UserScript==
 /*jshint multistr: true */
