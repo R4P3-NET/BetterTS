@@ -91,7 +91,6 @@ ts_toggleShoutbox = function() {
 					<ul class="uk-nav uk-nav-navbar">\
 						<li><a href="search.php?do=getnew&contenttype=vBForum_Post"><span>Unread Posts</span></a></li>\
 						<li><a href="search.php?do=getdaily"><span>Daily Posts</span></a></li>\
-						<li><a href="forumdisplay.php?do=markread"><span>Mark Forums Read</span></a></li>\
 		             		 </ul>\
 		            	</div>\
 			</li>\
@@ -99,6 +98,5 @@ ts_toggleShoutbox = function() {
         ts_addNavLink('Unread Posts', 'search.php?do=getnew&contenttype=vBForum_Post');
         ts_addNavLink('Daily Posts', 'search.php?do=getdaily');
         ts_addShoutbox('http://www.freeshoutbox.net/bluscream&');
-        //ts_addNavBarLink('R4P3', 'https://r4p3.net', 1);
     });
 })();
