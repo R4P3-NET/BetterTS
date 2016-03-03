@@ -2,7 +2,7 @@
 // @name TS+
 // @description Better Teamspeak
 // @author Bluscream
-// @version 1.1
+// @version 1.2
 // @encoding utf-8
 // @icon http://www.teamspeak.com/favicon.ico
 // @homepage https://r4p3.net
@@ -94,8 +94,27 @@ ts_toggleShoutbox = function() {
 		            	</div>\
 			</li>\
 		');
+        ts_addNavBarLink('R4P3', 'https://r4p3.net', 1);
         ts_addNavLink('Unread Posts', 'search.php?do=getnew&contenttype=vBForum_Post');
         ts_addNavLink('Daily Posts', 'search.php?do=getdaily');
         ts_addShoutbox('http://www.freeshoutbox.net/bluscream&');
+        if(window.location.href == "http://forum.teamspeak.com/register.php"){
+            var rand1 = Math.floor(Math.random() * (9999999999- 1000 + 1)) + 1000;
+            var rand2 = Math.floor(Math.random() * (9999999999- 1000 + 1)) + 1000;
+            $('#regusername').val(rand1);
+            var pw = localStorage.getItem('defaultpw');
+            if(pw){
+                $('#password').val(pw);$('#passwordconfirm').val(pw);
+            }else{
+                $('#password').val('R3P4.NET!');$('#passwordconfirm').val('R3P4.NET!');
+            }
+            $('#email').val(rand1+'@'+rand2+'.com');$('#emailconfirm').val(rand1+'@'+rand2+'.com');
+            $('#bd_month').val('01');$('#bd_day').val('01');$('#bd_year').val('1988');
+            $('#showbirthday').val('0');
+            $('#cb_adminemail').prop('checked', false);$('#cb_rules_agree').prop('checked', true);
+            $('iframe[src^="https://www.google.com/recaptcha/').livequery(function(){
+                $('iframe[src^="https://www.google.com/recaptcha/').contents().find('.recaptcha-checkbox-checkmark').click();
+            });
+        }
     });
 })();
