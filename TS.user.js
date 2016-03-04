@@ -12,8 +12,8 @@
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterTS/master/TS%2B.user.js
 // @downloadURL https://github.com/R4P3-NET/BetterTS/raw/master/TS%2B.user.js
 // @require https://code.jquery.com/jquery-2.2.1.min.js
-// @require https://raw.githubusercontent.com/meetselva/attrchange/master/js/attrchange.js
-// @require https://raw.githubusercontent.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
+// @require https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js
+// @require https://cdn.rawgit.com/brandonaaron/livequery/master/jquery.livequery.min.js
 // @include *forum.teamspeak.com/*
 // @grant unsafeWindow
 // ==/UserScript==
