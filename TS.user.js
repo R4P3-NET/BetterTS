@@ -9,8 +9,8 @@
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterTS/master/TS%2B.user.js
 // @downloadURL https://github.com/R4P3-NET/BetterTS/raw/master/TS%2B.user.js
 // @require https://code.jquery.com/jquery-2.2.1.min.js
+// @require https://cdn.rawgit.com/brandonaaron/livequery/1.1.1/jquery.livequery.js
 // @require https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js
-// @require https://cdn.rawgit.com/brandonaaron/livequery/master/jquery.livequery.min.js
 // @contactURL https://r4p3.net/members/bluscream.53/
 // @twitterURL https://twitter.com/R4P3_NET
 // @homepage https://r4p3.net
