@@ -1,12 +1,9 @@
 // ==UserScript==
 // @name TS+
 // @description Better Teamspeak
-// @author Bluscream
+// @include *forum.teamspeak.com/*
 // @version 1.2
-// @encoding utf-8
 // @icon http://www.teamspeak.com/favicon.ico
-// @homepage https://r4p3.net
-// @contactURL https://r4p3.net/members/bluscream.53/
 // @supportURL https://github.com/R4P3-NET/BetterTS/issues/new
 // @contributionURL https://github.com/R4P3-NET/BetterTS/compare
 // @updateURL https://cdn.rawgit.com/R4P3-NET/BetterTS/master/TS%2B.user.js
@@ -14,10 +11,15 @@
 // @require https://code.jquery.com/jquery-2.2.1.min.js
 // @require https://cdn.rawgit.com/meetselva/attrchange/master/js/attrchange.js
 // @require https://cdn.rawgit.com/brandonaaron/livequery/master/jquery.livequery.min.js
-// @include *forum.teamspeak.com/*
-// @grant unsafeWindow
+// @contactURL https://r4p3.net/members/bluscream.53/
+// @twitterURL https://twitter.com/R4P3_NET
+// @homepage https://r4p3.net
+// @author Bluscream
+// @encoding utf-8
 // ==/UserScript==
 /*jshint multistr: true */
+//laxcomma
+//allow pasting
 js_addItem = function(parent, html, before) {
     if(before){ $(parent).before(html); }else{ $(parent).after(html); }
 };
