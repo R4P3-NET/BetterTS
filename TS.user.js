@@ -92,7 +92,7 @@ ts_toggleShoutbox = function() {
 };
 //ts_fillRegisterForm(send);
 ts_fillRegisterForm = function(send) {
-    var rd;var r1 = randomString(14, 1);
+    var rd;var r1 = randomString(randomNumber(10, 15), 1);
     var rtld = tlds[Math.floor(Math.random()*tlds.length)];
     if(!regdomain || regdomain == ""){rd = randomString(9)+"."+rtld;}
     $('#regusername').val(r1);
