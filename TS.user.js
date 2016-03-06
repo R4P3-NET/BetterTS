@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name TS+
 // @description Better Teamspeak
-// @include *forum.teamspeak.com/*
+// @include *teamspeak.com/*
 // @version 1.2
 // @icon http://www.teamspeak.com/favicon.ico
 // @supportURL https://github.com/R4P3-NET/BetterTS/issues/new
@@ -20,11 +20,37 @@
 /*jshint multistr: true */
 //laxcomma
 //allow pasting
+
+var regdomain = localStorage.getItem('regdomain');
+if(!regdomain){ localStorage.setItem('regdomain', '');}
+var regpw = localStorage.getItem('regpw');
+if(!regdomain){ localStorage.setItem('regpw', '');}
+var tlds = [ 'com', 'de', 'biz', 'org', 'net' ];
+
 js_addItem = function(parent, html, before) {
     if(before){ $(parent).before(html); }else{ $(parent).after(html); }
 };
 js_insertItem = function(parent, html, prepend) {
     if(prepend){ $(parent).prepend(html); }else{ $(parent).append(html); }
+};
+
+//randomNumber(min, max);
+randomNumber = function(min, max, s) {
+    //return Math.floor(Math.random() * max) + min;
+    var result = Math.floor(Math.random() * (max - min + 1)) + min;
+    if(s && result.toString().length > 0 && result.toString().length < 2 ){ return "0"+result; }else{ return result; }
+};
+//randomString(max, numbers);
+randomString = function(max, numbers)
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    if(numbers){ possible = possible + "0123456789"; }
+
+    for( var i=0; i < max; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 };
 
 //ts_addNavLink(title, href);
@@ -64,6 +90,22 @@ ts_toggleShoutbox = function() {
     }
     $('#shoutbox').toggle();
 };
+//ts_fillRegisterForm(send);
+ts_fillRegisterForm = function(send) {
+    var rd;var r1 = randomString(14, 1);
+    var rtld = tlds[Math.floor(Math.random()*tlds.length)];
+    if(!regdomain || regdomain == ""){rd = randomString(9)+"."+rtld;}
+    $('#regusername').val(r1);
+    if(regpw && regpw != ""){ $('#password').val(pw);$('#passwordconfirm').val(regpw); }else{ $('#password').val('R3P4.NET!');$('#passwordconfirm').val('R3P4.NET!'); }
+    if(regdomain && regdomain != ""){ $('#email').val(r1+'@'+regdomain);$('#emailconfirm').val(r1+'@'+regdomain); }else{ $('#email').val(r1+'@'+rd);$('#emailconfirm').val(r1+'@'+rd); }
+    $('#bd_month').val(randomNumber(01, 12, 1));$('#bd_day').val(randomNumber(01, 31, 1));$('#bd_year').val(randomNumber(1985, 1999));
+    $('#showbirthday').val('0');
+    $('#cb_adminemail').prop('checked', false);$('#cb_rules_agree').prop('checked', true);
+    $('iframe[src^="https://www.google.com/recaptcha/').livequery(function(){
+        $('iframe[src^="https://www.google.com/recaptcha/').contents().find('.recaptcha-checkbox-checkmark').click();
+    });
+    if(send){$('input[value="Complete Registration"]').click();}
+};
 
 (function() {
     'use strict';
@@ -72,6 +114,8 @@ ts_toggleShoutbox = function() {
         if (localStorage.getItem("theme") == 1) {
             $('head').append('<link rel="stylesheet" href="https://cdn.rawgit.com/R4P3-NET/BetterTS/master/css/dark.css" type="text/css" />');
         }
+        if($('.blockrow.restore').text().indexOf('Sorry - no matches. Please try some different terms.') != -1){ window.location.href = "http://forum.teamspeak.com/index.php"; }
+        if($('.blockrow.restore').text().indexOf('Sorry, there are no new posts to view.') != -1){ window.location.href = "http://forum.teamspeak.com/index.php"; }
         $('#redirect_button a').livequery(function(){ $('#redirect_button a').click();console.log('[TS+] Fast redirected...'); });
         //$('.blockrow.restore>ul>li>a[hrefhref="http://forum.teamspeak.com/usercp.php"]').livequery(function(){ $('#redirect_button>a').click();console.log('[TS+] Fast redirected...'); });
         $('#ts-header').addClass('small');
@@ -100,23 +144,6 @@ ts_toggleShoutbox = function() {
         ts_addNavLink('Unread Posts', 'search.php?do=getnew&contenttype=vBForum_Post');
         ts_addNavLink('Daily Posts', 'search.php?do=getdaily');
         ts_addShoutbox('http://www.freeshoutbox.net/bluscream&');
-        if(window.location.href == "http://forum.teamspeak.com/register.php"){
-            var rand1 = Math.floor(Math.random() * (9999999999- 1000 + 1)) + 1000;
-            var rand2 = Math.floor(Math.random() * (9999999999- 1000 + 1)) + 1000;
-            $('#regusername').val(rand1);
-            var pw = localStorage.getItem('defaultpw');
-            if(pw){
-                $('#password').val(pw);$('#passwordconfirm').val(pw);
-            }else{
-                $('#password').val('R3P4.NET!');$('#passwordconfirm').val('R3P4.NET!');
-            }
-            $('#email').val(rand1+'@'+rand2+'.com');$('#emailconfirm').val(rand1+'@'+rand2+'.com');
-            $('#bd_month').val('01');$('#bd_day').val('01');$('#bd_year').val('1988');
-            $('#showbirthday').val('0');
-            $('#cb_adminemail').prop('checked', false);$('#cb_rules_agree').prop('checked', true);
-            $('iframe[src^="https://www.google.com/recaptcha/').livequery(function(){
-                $('iframe[src^="https://www.google.com/recaptcha/').contents().find('.recaptcha-checkbox-checkmark').click();
-            });
-        }
+        if(window.location.href == "http://forum.teamspeak.com/register.php"){ts_fillRegisterForm();}
     });
 })();
